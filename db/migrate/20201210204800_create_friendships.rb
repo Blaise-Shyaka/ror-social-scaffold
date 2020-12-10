@@ -7,5 +7,7 @@ class CreateFriendships < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_foreign_key :friendships, :users, column: :sender_id
+    add_foreign_key :friendships, :users, column: :receiver_id
   end
 end
