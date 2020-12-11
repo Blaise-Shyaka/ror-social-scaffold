@@ -3,12 +3,12 @@ class FriendshipsController < ApplicationController
     @requests = current_user.friendships.all
     @invitations = current_user.invitations.all
   end
-  
+
   def create
     @friendship = current_user.friendships.new(friendship_params)
-    if @friendship.save
-      redirect_to users_path, notice: "Friendship request sent successfully"
-    end
+    return unless @friendship.save
+
+    redirect_to users_path, notice: 'Friendship request sent successfully'
   end
 
   def accept
