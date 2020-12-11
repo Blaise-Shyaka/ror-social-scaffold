@@ -1,5 +1,28 @@
 <section class="users-section">
   <ul class="users-list">
-    <%= render @users %>
+    <% @users.each do |user| %>
+      <% if user == current_user %>
+        <li>
+          <span> Me </span>
+          <span> <%= link_to 'My Profile',  user_path(current_user), class: 'profile-link' %> </span>
+        </li>
+      <% else %>
+        <li> Name: <%= user.name %>
+          <span class="profile-link">
+            <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          </span>
+
+          <span>
+            <% if current_user.friendships.where(receiver_id: user.id).none? %>
+            <%= form_for @friendship, url: friendships_path, method: :post do |f| %>
+                <%= f.hidden_field :receiver_id, value: user.id %>
+                <%= f.hidden_field :status, value: nil %>
+                <%= f.submit "Send Invite" %>
+              <% end %>
+            <% end %>
+          </span>
+        </li>
+      <% end %>
+    <% end %>
   </ul>
 </section>
