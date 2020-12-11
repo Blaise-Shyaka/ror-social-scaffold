@@ -1,0 +1,55 @@
+<h1><%= current_user.name%>'s friendships</h1>
+<table>
+  <thead>
+    <tr>
+      <th> Friendship requests </th>
+      <th> Friendship invitations </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <ul>
+          <% if @requests.any? %>
+            <% @requests.each do |friendship| %>
+              <li>
+                <span> <%= friendship.receiver.name %> </span>
+                <% if friendship.status %>
+                  <span>Accepted</span>
+                <% elsif friendship.status.nil? %>
+                  <span>Pending</span>
+                <% else %>
+                  <span>Rejected</span>
+                <% end %>
+              </li>
+            <% end %>
+          <% else %>
+            <li>You haven't yet sent any friendship requests! </li>
+          <% end %>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <% if @invitations.any? %>
+            <% @invitations.each do |invitation| %>
+              <li>
+                <span> <%= invitation.receiver.name %> </span>
+                <% if invitation.status %>
+                  <span>You are friends!</span>
+                <% elsif invitation.status.nil? %>
+                  <span><%= link_to 'Accept', path %></span>
+                  <span><%= link_to 'Reject', path %></span>
+                <% else %>
+                  <span>Rejected</span>
+                  <span><%= link_to 'Accept', path %></span>
+                <% end %>
+              </li>
+            <% end %>
+          <% else %>
+            <li>You have no friendship invitations yet! </li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
