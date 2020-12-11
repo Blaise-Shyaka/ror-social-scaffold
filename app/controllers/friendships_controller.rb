@@ -11,6 +11,18 @@ class FriendshipsController < ApplicationController
     end
   end
 
+  def accept
+    @invitation = Friendship.find(params[:id])
+    @invitation.update(status: true)
+    redirect_to friendships_path
+  end
+
+  def reject
+    @invitation = Friendship.find(params[:id])
+    @invitation.update(status: false)
+    redirect_to friendships_path
+  end
+
   private
 
   def friendship_params
