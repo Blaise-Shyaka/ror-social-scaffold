@@ -13,13 +13,13 @@
           <% if @requests.any? %>
             <% @requests.each do |friendship| %>
               <li>
-                <span> <%= friendship.receiver.name %> </span>
+                <span> <%= friendship.receiver.name %> | </span>
                 <% if friendship.status %>
-                  <span>Accepted</span>
+                  <span>You are friends!</span>
                 <% elsif friendship.status.nil? %>
-                  <span>Pending</span>
+                  <span>Request Pending</span>
                 <% else %>
-                  <span>Rejected</span>
+                  <span>Request Rejected</span>
                 <% end %>
               </li>
             <% end %>
@@ -33,15 +33,14 @@
           <% if @invitations.any? %>
             <% @invitations.each do |invitation| %>
               <li>
-                <span> <%= invitation.receiver.name %> </span>
+                <span><%= invitation.sender.name %></span>
                 <% if invitation.status %>
                   <span>You are friends!</span>
                 <% elsif invitation.status.nil? %>
-                  <span><%= link_to 'Accept', path %></span>
-                  <span><%= link_to 'Reject', path %></span>
+                  <span><%= link_to 'Accept Request', users_path %></span>
+                  <span><%= link_to 'Reject Request', users_path %></span>
                 <% else %>
-                  <span>Rejected</span>
-                  <span><%= link_to 'Accept', path %></span>
+                  <span><%= link_to 'Accept Request', users_path %></span>
                 <% end %>
               </li>
             <% end %>
