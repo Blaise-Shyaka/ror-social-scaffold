@@ -37,10 +37,10 @@
                 <% if invitation.status %>
                   <span>You are friends!</span>
                 <% elsif invitation.status.nil? %>
-                  <span><%= link_to 'Accept Request', users_path %></span>
-                  <span><%= link_to 'Reject Request', users_path %></span>
+                  <span><%= link_to 'Accept Request', accept_friendship_path(invitation.id), method: :put %></span>
+                  <span><%= link_to 'Reject Request', reject_friendship_path(invitation.id), method: :put %></span>
                 <% else %>
-                  <span><%= link_to 'Accept Request', users_path %></span>
+                  <span><%= link_to 'Accept Request', accept_friendship_path(invitation.id), method: :put %></span>
                 <% end %>
               </li>
             <% end %>

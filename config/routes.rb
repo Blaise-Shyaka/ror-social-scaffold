@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
   resources :friendships, only: %i[index create] do
     member do
-      put 'update'
+      put 'accept'
       put 'reject'
     end
   end
