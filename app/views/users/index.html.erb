@@ -18,8 +18,8 @@
               <% if invite[0].status %>
                 You are friends
               <% else %>
-                <%= link_to 'Accept Request', users_path %>
-                <%= link_to 'Reject Request', users_path %>
+                <%= link_to 'Accept Request', accept_friendship_path(invite[0].id), method: :put %>
+                <%= link_to 'Reject Request', reject_friendship_path(invite[0].id), method: :put %>
               <% end %>
             <% elsif current_user.friendships.where(receiver_id: user.id).none? %>
               <%= form_for @friendship, url: friendships_path, method: :post do |f| %>
