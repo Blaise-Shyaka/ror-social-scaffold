@@ -10,6 +10,12 @@
     Recent posts
   </h3>
   <ul class="posts">
-    <%= render @timeline_posts %>
+    <% @timeline_posts.each do |post| %>
+      <% friends_with_author = post.user.friendships.where(receiver_id: current_user.id, status: true) %>
+      <% inverse_friends_with_author = post.user.invitations.where(sender_id: current_user.id, status: true) %>
+      <% if friends_with_author.any? || inverse_friends_with_author.any? || post.user == current_user %>
+        <%= render "post", post: post %>
+      <% end %>
+    <% end %>
   </ul>
 </article>
