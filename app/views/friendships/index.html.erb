@@ -10,43 +10,12 @@
     <tr>
       <td>
         <ul>
-          <% if @requests.any? %>
-            <% @requests.each do |friendship| %>
-              <li>
-                <span> <%= friendship.receiver.name %> | </span>
-                <% if friendship.status %>
-                  <span>You are friends!</span>
-                <% elsif friendship.status.nil? %>
-                  <span>Request Pending</span>
-                <% else %>
-                  <span>Request Rejected</span>
-                <% end %>
-              </li>
-            <% end %>
-          <% else %>
-            <li>You haven't yet sent any friendship requests! </li>
-          <% end %>
+          <%= display_friendships(@requests) %>
         </ul>
       </td>
       <td>
         <ul>
-          <% if @invitations.any? %>
-            <% @invitations.each do |invitation| %>
-              <li>
-                <span><%= invitation.sender.name %></span>
-                <% if invitation.status %>
-                  <span>You are friends!</span>
-                <% elsif invitation.status.nil? %>
-                  <span><%= link_to 'Accept Request', accept_friendship_path(invitation.id), method: :put %></span>
-                  <span><%= link_to 'Reject Request', reject_friendship_path(invitation.id), method: :put %></span>
-                <% else %>
-                  <span><%= link_to 'Accept Request', accept_friendship_path(invitation.id), method: :put %></span>
-                <% end %>
-              </li>
-            <% end %>
-          <% else %>
-            <li>You have no friendship invitations yet! </li>
-          <% end %>
+          <%= display_invitations(@invitations) %>
         </ul>
       </td>
     </tr>
