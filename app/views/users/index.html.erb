@@ -13,26 +13,7 @@
           </span>
 
           <span>
-            <%invite = current_user.invitations.where(sender_id: user.id)%>
-            <% friendship = current_user.friendships.where(receiver_id: user.id) %>
-            <% if invite.any? %>
-              <% if invite[0].status %>
-                You are friends
-              <% else %>
-                <%= link_to 'Accept Request', accept_friendship_path(invite[0].id), method: :put %>
-                <%= link_to 'Reject Request', reject_friendship_path(invite[0].id), method: :put %>
-              <% end %>
-            <% elsif friendship.any? %>
-              <% if friendship[0].status %>
-                You are friends
-              <% end %>
-            <% elsif friendship.none? %>
-              <%= form_for @friendship, url: friendships_path, method: :post do |f| %>
-                <%= f.hidden_field :receiver_id, value: user.id %>
-                <%= f.hidden_field :status, value: nil %>
-                <%= f.submit "Send Invite" %>
-              <% end %>
-            <% end %>
+            <%= display_status_or_call_to_action_links(user) %>
           </span>
         </li>
       <% end %>
