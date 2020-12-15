@@ -35,13 +35,15 @@ module FriendshipHelper
 
     if invites.any?
       invites.each do |inv|
-        status_message1 = 'You are friends!'
-        status_message2 = "<span><%= link_to 'Accept Request', accept_friendship_path(#{inv.id}), method: :put %></span>
-                      <span><%= link_to 'Reject Request', reject_friendship_path(#{inv.id}), method: :put %></span>"
-        status_message3 = "<span><%= link_to 'Accept Request', accept_friendship_path(#{inv.id}), method: :put %></span>"
-
+        status = ''
+        if inv.status
+          status = 'You are friends!'
+        elsif inv.status.nil?
+          return render 'handle_request', inv: inv
+        else
+          status = "<span><%= link_to 'Accept Request', accept_friendship_path(#{inv.id}), method: :put %></span>"
+        end
         name = inv.sender.name
-        status = friendship_status(inv, status_message1, status_message2, status_message3)
         list_items = (content_tag :li, "#{name} | #{status}")
         markup << list_items
       end
