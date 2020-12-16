@@ -25,14 +25,14 @@ module ApplicationHelper
   end
 
   def notice_display
-    if notice.present?
-      render 'layouts/notice'
-    end
+    return unless notice.present?
+
+    render 'layouts/notice'
   end
 
   def alert_display
-    if alert.present?
-      render 'layouts/alert'
-    end
+    return unless alert.present?
+
+    render 'layouts/alert'
   end
 end

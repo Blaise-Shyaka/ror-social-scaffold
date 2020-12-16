@@ -41,7 +41,7 @@ module FriendshipHelper
         if inv.status
           status = 'You are friends!'
         else
-         invitations << inv
+          invitations << inv
         end
         name = inv.sender.name
         list_items = (content_tag :li, "#{name} | #{status}")
@@ -52,9 +52,7 @@ module FriendshipHelper
       markup << (content_tag :li, text)
     end
 
-    if invitations.any?
-      return render 'handle_request', invitations: invitations
-    end
+    return render 'handle_request', invitations: invitations if invitations.any?
 
     markup.html_safe
   end

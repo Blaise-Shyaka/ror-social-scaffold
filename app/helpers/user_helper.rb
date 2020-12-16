@@ -18,9 +18,7 @@ module UserHelper
         return render 'user_handle_request', invite: invite
       end
     elsif friendship.any?
-      if friendship[0].status
-        markup << 'You are friends'
-      end
+      markup << 'You are friends' if friendship[0].status
     elsif friendship.none?
       return render 'send_invite', user: user
     end
@@ -35,15 +33,15 @@ module UserHelper
     end
   end
 
-  def single_user_action_links
+  def single_user_action_links(user)
     invite = current_user.invitations.where(sender_id: params[:id])
     friendship = current_user.friendships.where(receiver_id: params[:id])
     if invite.any?
-      if !invite[0].status
-        render 'user_handle_request', invite: invite
-      end
+      return if invite[0].status
+
+      render 'user_handle_request', invite: invite
     elsif friendship.none?
-      render 'send_invite'
+      render 'send_invite', user: user
     end
   end
 end

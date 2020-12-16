@@ -11,9 +11,7 @@ module PostHelper
       friends_with_author = p.user.friendships.where(receiver_id: current_user.id, status: true)
       inverse_friends_with_author = p.user.invitations.where(sender_id: current_user.id, status: true)
 
-      if friends_with_author.any? || inverse_friends_with_author.any? || p.user == current_user
-        posts_list << p
-      end
+      posts_list << p if friends_with_author.any? || inverse_friends_with_author.any? || p.user == current_user
     end
     posts_list
   end
