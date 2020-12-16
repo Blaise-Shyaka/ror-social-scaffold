@@ -15,8 +15,6 @@ module UserHelper
       if invite[0].status
         markup << 'You are friends'
       elsif invite[0].status.nil?
-        p "Username: #{user.name}"
-        p "Invite status: #{invite[0].status}"
         return render 'user_handle_request', invite: invite
       end
     elsif friendship.any?
@@ -34,6 +32,18 @@ module UserHelper
       render 'my_profile'
     else
       render 'user', user: user
+    end
+  end
+
+  def single_user_action_links
+    invite = current_user.invitations.where(sender_id: params[:id])
+    friendship = current_user.friendships.where(receiver_id: params[:id])
+    if invite.any?
+      if !invite[0].status
+        render 'user_handle_request', invite: invite
+      end
+    elsif friendship.none?
+      render 'send_invite'
     end
   end
 end

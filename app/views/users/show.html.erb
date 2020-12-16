@@ -1,21 +1,6 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
-  <p>
-    <%invite = current_user.invitations.where(sender_id: params[:id])%>
-    <% friendship = current_user.friendships.where(receiver_id: params[:id]) %>
-    <% if invite.any? %>
-      <% if !invite[0].status %>
-        <%= link_to 'Accept Request', accept_friendship_path(invite[0].id), method: :put %>
-        <%= link_to 'Reject Request', reject_friendship_path(invite[0].id), method: :put %>
-      <% end %>
-    <% elsif friendship.none? %>
-      <%= form_for @friendship, url: friendships_path, method: :post do |f| %>
-        <%= f.hidden_field :receiver_id, value: params[:id] %>
-        <%= f.hidden_field :status, value: nil %>
-        <%= f.submit "Send Invite" %>
-      <% end %>
-    <% end %>
-  </p>
+  <p> <%= single_user_action_links %> </p>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
