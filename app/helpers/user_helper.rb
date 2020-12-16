@@ -7,6 +7,8 @@ module UserHelper
     <% end %>"
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
   def display_status_or_call_to_action_links(user)
     invite = current_user.invitations.where(sender_id: user.id)
     friendship = current_user.friendships.where(receiver_id: user.id)
@@ -24,6 +26,8 @@ module UserHelper
     end
     markup.html_safe
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
 
   def display_each_user(user)
     if user == current_user
