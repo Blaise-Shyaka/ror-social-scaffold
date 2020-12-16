@@ -32,16 +32,16 @@ module FriendshipHelper
 
   def display_invitations(invites)
     markup = ''
+    invitations = []
 
     if invites.any?
       invites.each do |inv|
+        p inv
         status = ''
         if inv.status
           status = 'You are friends!'
-        elsif inv.status.nil?
-          return render 'handle_request', inv: inv
         else
-          status = "<span><%= link_to 'Accept Request', accept_friendship_path(#{inv.id}), method: :put %></span>"
+         invitations << inv
         end
         name = inv.sender.name
         list_items = (content_tag :li, "#{name} | #{status}")
@@ -50,6 +50,10 @@ module FriendshipHelper
     else
       text = "You haven't yet sent any invitation requests!"
       markup << (content_tag :li, text)
+    end
+
+    if invitations.any?
+      return render 'handle_request', invitations: invitations
     end
 
     markup.html_safe

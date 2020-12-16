@@ -1,3 +1,6 @@
-<%= inv.sender.name %>
-<%= link_to 'Accept Request', accept_friendship_path(inv.id), method: :put %>
-<%= link_to 'Reject Request', reject_friendship_path(inv.id), method: :put %>
+<% invitations.each do |invitation|%>
+  <%= invitation.sender.name %>
+  <%= link_to 'Accept Request', accept_friendship_path(invitation.id), method: :put %>
+  <%= link_to 'Reject Request', reject_friendship_path(invitation.id), method: :put %>
+  <br>
+<% end %>

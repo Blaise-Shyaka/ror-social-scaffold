@@ -15,7 +15,9 @@ module UserHelper
       if invite[0].status
         markup << 'You are friends'
       elsif invite[0].status.nil?
-        return render 'handle_request', id: user.id
+        p "Username: #{user.name}"
+        p "Invite status: #{invite[0].status}"
+        return render 'user_handle_request', invite: invite
       end
     elsif friendship.any?
       if friendship[0].status
