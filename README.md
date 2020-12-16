@@ -1,6 +1,10 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+This project is a social media app. A user can create an account, follow other users, and start viewing their posts. A user can create a post, comment on other posts and even like them.
+
+![Screenshot One](./screenshots/screenshot1.png)
+![Screenshot Two](./screenshots/screenshot2.png)
+![Screenshot Three](./screenshots/screenshot3.png)
 
 ## Built With
 
@@ -11,18 +15,23 @@
 
 TBA
 
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
+- Ruby: 2.6.3
+- Rails: 5.2.3
+- Postgres: >=9.5
 
 ### Setup
+
+Clone this repository by running:
+
+```
+git clone https://github.com/Blaise-Shyaka/ror-social-scaffold/pulls
+```
 
 Instal gems with:
 
@@ -36,16 +45,6 @@ Setup database with:
    rails db:create
    rails db:migrate
 ```
-
-### Github Actions
-
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
 
 ### Usage
 
@@ -63,15 +62,13 @@ Open `http://localhost:3000/` in your browser.
     rpsec --format documentation
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
-
 ## Authors
 
-TBA
+👤 **Blaise Pascal SHYAKA**
+
+- GitHub: [@Blaise-Shyaka](https://github.com/Blaise-Shyaka/)
+- Twitter: [@blaise_shyaka95](https://twitter.com/blaise_shyaka95)
+- LinkedIn: [Blaise Pascal SHYAKA](https://linkedin.com/in/blaise-pascal-shyaka)
 
 ## 🤝 Contributing
 
@@ -82,12 +79,4 @@ Feel free to check the [issues page](issues/).
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-TBA
-
-## 📝 License
-
-TBA
 
