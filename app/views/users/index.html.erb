@@ -1,22 +1,5 @@
 <section class="users-section">
   <ul class="users-list">
-    <% @users.each do |user| %>
-      <% if user == current_user %>
-        <li>
-          <span> Me </span>
-          <span> <%= link_to 'My Profile',  user_path(current_user), class: 'profile-link' %> </span>
-        </li>
-      <% else %>
-        <li> Name: <%= user.name %>
-          <span class="profile-link">
-            <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-          </span>
-
-          <span>
-            <%= display_status_or_call_to_action_links(user) %>
-          </span>
-        </li>
-      <% end %>
-    <% end %>
+    <%= render 'all_users', users: @users %>
   </ul>
 </section>

@@ -28,4 +28,12 @@ module UserHelper
     end
     markup.html_safe
   end
+
+  def display_each_user(user)
+    if user == current_user
+      render 'my_profile'
+    else
+      render 'user', user: user
+    end
+  end
 end
