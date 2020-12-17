@@ -45,6 +45,8 @@ module UserHelper
 
       render 'user_handle_request', invite: invite
     elsif friendship.none?
+      return if user == current_user
+
       render 'send_invite', user: user
     end
   end
