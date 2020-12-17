@@ -19,7 +19,7 @@ class FriendshipsController < ApplicationController
 
   def reject
     @invitation = Friendship.find(params[:id])
-    @invitation.update(status: false)
+    @invitation.destroy
     redirect_to friendships_path
   end
 
