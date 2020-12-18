@@ -9,10 +9,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     resources :likes, only: [:create, :destroy]
   end
-  resources :friendships, only: %i[index create] do
+  resources :friendships, only: %i[index create destroy] do
     member do
       put 'accept'
-      put 'reject'
+      delete 'reject'
     end
   end
 
