@@ -1,0 +1,23 @@
+<h1><%= current_user.name%>'s friendships</h1>
+<table>
+  <thead>
+    <tr>
+      <th> Friendship requests </th>
+      <th> Friendship invitations </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <ul>
+          <%= display_friendships(@requests) %>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <%= display_invitations(@invitations) %>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
