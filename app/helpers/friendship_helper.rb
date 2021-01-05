@@ -1,14 +1,4 @@
 module FriendshipHelper
-  def friendship_status(friendship, status_msg1, status_msg2, status_msg3)
-    if friendship.status
-      status_msg1
-    elsif friendship.status.nil?
-      status_msg2
-    else
-      status_msg3
-    end
-  end
-
   def display_all_friends(friends)
     markup = ''
 
