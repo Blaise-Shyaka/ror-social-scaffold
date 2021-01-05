@@ -1,7 +1,8 @@
 class FriendshipsController < ApplicationController
   def index
-    @requests = current_user.friendships.all
-    @invitations = current_user.invitations.all
+    @friends = current_user.friends
+    @requests = current_user.pending_requests
+    @invitations = current_user.pending_invitations
   end
 
   def create
