@@ -13,4 +13,6 @@ class User < ApplicationRecord
   has_many :friends, through: :confirmed_friendships
   has_many :pending_friendships, -> { where status: false }, class_name: :Friendship
   has_many :pending_requests, through: :pending_friendships, source: :friend
+  has_many :pending_invitations, -> { where status: false }, class_name: :Friendship, foreign_key: :friend_id
+  has_many :invitation_requests, through: :pending_invitations, source: :user
 end
