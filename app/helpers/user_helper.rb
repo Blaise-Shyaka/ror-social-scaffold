@@ -28,13 +28,14 @@ module UserHelper
   end
 
   def single_user_action_links(user)
-    invite = current_user.invitations.where(sender_id: params[:id])
-    friendship = current_user.friendships.where(receiver_id: params[:id])
-    if invite.any?
-      return if invite[0].status
+    request_pending = current_user.pending_requests.include?(user)
+    invitation_pending = current_user.pending_invitations.include?(user)
+    friends = current_user.friends.include?(user)
 
-      render 'user_handle_request', invite: invite
-    elsif friendship.none?
+    if invitation_pending
+      invitation = Friendship.where(user_id: user.id, friend_id: current_user.id)
+      render 'user_handle_request', invite: invitation
+    elsif !friends && !request_pending
       return if user == current_user
 
       render 'send_invite', user: user
