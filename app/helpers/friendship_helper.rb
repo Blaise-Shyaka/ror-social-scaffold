@@ -5,11 +5,11 @@ module FriendshipHelper
     if friends.any?
       friends.each do |req|
         name = req.name
-        list_items = (content_tag :li, "#{name}")
+        list_items = (content_tag :li, name)
         markup << list_items
       end
     else
-      text = "You have no friends yet!"
+      text = 'You have no friends yet!'
       markup << (content_tag :li, text)
     end
 
@@ -20,7 +20,7 @@ module FriendshipHelper
     markup = ''
 
     if invites.none?
-      text = "You have no pending invitations!"
+      text = 'You have no pending invitations!'
       markup << (content_tag :li, text)
       return markup.html_safe
     end
@@ -34,11 +34,11 @@ module FriendshipHelper
     if requests.any?
       requests.each do |req|
         name = req.name
-        list_items = (content_tag :li, "#{name}")
+        list_items = (content_tag :li, name)
         markup << list_items
       end
     else
-      text = "You have no pending requests!"
+      text = 'You have no pending requests!'
       markup << (content_tag :li, text)
     end
 

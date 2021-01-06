@@ -1,6 +1,4 @@
 module UserHelper
-  # rubocop:disable Metrics/CyclomaticComplexity
-  # rubocop:disable Metrics/PerceivedComplexity
   def display_status_or_call_to_action_links(user)
     markup = ''
     if current_user.friends.include?(user)
@@ -16,8 +14,6 @@ module UserHelper
 
     markup.html_safe
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
-  # rubocop:enable Metrics/PerceivedComplexity
 
   def display_each_user(user)
     if user == current_user

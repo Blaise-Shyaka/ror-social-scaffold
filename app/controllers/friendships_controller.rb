@@ -15,7 +15,12 @@ class FriendshipsController < ApplicationController
   def accept
     @invitation = Friendship.find(params[:id])
     @invitation.update(status: true)
-    @confirmed_friendship = Friendship.create!(user_id: @invitation.friend_id, friend_id: @invitation.user_id, status: true)
+    @confirmed_friendship = Friendship.create!(
+      user_id: @invitation.friend_id,
+      friend_id: @invitation.user_id,
+      status: true
+    )
+
     redirect_to friendships_path
   end
 
