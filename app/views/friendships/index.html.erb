@@ -2,20 +2,26 @@
 <table>
   <thead>
     <tr>
-      <th> Friendship requests </th>
-      <th> Friendship invitations </th>
+      <th> All Friends </th>
+      <th> Pending invitations </th>
+      <th> Pending Sent requests </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>
         <ul>
-          <%= display_friendships(@requests) %>
+          <%= display_all_friends(@friends) %>
         </ul>
       </td>
       <td>
         <ul>
           <%= display_invitations(@invitations) %>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <%= display_requests(@requests) %>
         </ul>
       </td>
     </tr>
