@@ -15,4 +15,24 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def nav_actions
+    if current_user
+      render 'layouts/signout'
+    else
+      render 'layouts/signin'
+    end
+  end
+
+  def notice_display
+    return unless notice.present?
+
+    render 'layouts/notice'
+  end
+
+  def alert_display
+    return unless alert.present?
+
+    render 'layouts/alert'
+  end
 end

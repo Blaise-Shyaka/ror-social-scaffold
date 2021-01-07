@@ -1,0 +1,6 @@
+<% invitations.each do |invitation|%>
+  <%= User.find(invitation.user_id).name %>
+  <%= link_to 'Accept Request', accept_friendship_path(invitation.id), method: :put %>
+  <%= link_to 'Reject Request', reject_friendship_path(invitation.id), method: :delete %>
+  <br>
+<% end %>
