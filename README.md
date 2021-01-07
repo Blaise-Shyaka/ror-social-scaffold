@@ -13,7 +13,7 @@ This project is a social media app. A user can create an account, follow other u
 
 ## Live Demo
 
-TBA
+[Live demo link](https://ancient-shore-49391.herokuapp.com/users/sign_in)
 
 ## Getting Started
 
